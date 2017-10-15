@@ -1,0 +1,200 @@
+@font-face {
+    font-family: 'PostGrotesk-Book';
+    src: url('../PostGrotesk-Book.woff2') format('woff2'),
+    url('../PostGrotesk-Book.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PostGrotesk-Medium';
+    src: url('../PostGrotesk-Medium.woff2') format('woff2'),
+    url('../PostGrotesk-Book.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Random';
+    src: url('../33B5CD_1_0.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Random2';
+    src: url('../2E464C_0_0.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ITCStepp';
+    src: url('../298F35_1_0.woff') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+$dark-gray: #585858;
+$tana: #bdba9c;
+$khaki: #f0e68c;
+$west-coast: #64551f;
+$highball: #90813b;
+$sandstone: #7b6d5c;
+$schooner: #8b8378;
+$spice: #66543e;
+$madras: #4c3b25;
+$onion: #33250d;
+$woodrush: #332915;
+$jacko-bean: #2e1c08;
+$acadia: #1e1205;
+$crowshead: #1a130a;
+
+$type-scale: 1;
+
+$modularscale: (
+        base: .75em,
+        ratio: 1.2,
+        400px: (
+                base:1em,
+        ),
+        900px: (
+                base: .875em,
+        ),
+);
+
+$component-key-set: (
+        //this will generate preconfigured classes for an inverted, accent and regular colorscheme versions.
+        default: (
+                prefix:"btn11",
+                container: default,
+                theme:default,
+                text-style: default
+        ),
+        secondary: (
+                prefix:"btn",
+                container: default,
+                theme:secondary,
+                text-style: default,
+        ),
+);
+$containerset: (
+        default: (
+                width: 100%,
+                height: 50px,
+                duration: 250ms,
+                padding:20px,
+                border-width: 1px 2em 0 4rem,
+                border-style: solid,
+                text-align:right,
+                overflow:hidden,
+                child-content: (
+                        h2: specialchildprops,
+                        h3:specialchildprops2,
+                ),
+                accentSelector: 'p,code,h1,blockquote'
+        ),
+);
+$themeset: (
+        default:(
+                'foreground': yellow,
+                'background': red,
+                'accent': orange,
+                'border': green
+
+        ),
+        bw:(
+                'foreground': white,
+                'background': green,
+                'accent': yellow,
+                'border': red
+
+        ),
+        primary:(
+                'foreground': $tana,
+                'background': $crowshead,
+                'accent': $khaki,
+                'border': $tana
+        ),
+        secondary:(
+                'foreground': $tana,
+                'background': $west-coast,
+                'accent': $khaki,
+                'border': $tana
+        ),
+        form:(
+                'foreground': $tana,
+                'background': $sandstone,
+                'accent': $khaki,
+                'border': $onion
+        ),
+);
+
+$type-style: (
+        default : (
+                font-family: Arial,
+                text-transform: none,
+                text-decoration:none,
+                font-weight: normal,
+                letter-spacing: 0px,
+                line-height: 1.5,
+                leading: 1.5,
+               //TODO: change to direct font size option
+                font-size: 0,
+                children: (
+                        p : 0,
+                        h1:6,
+                        h2:5,
+                ),
+                modularscale: (
+                        base: 1em,
+                        ratio: 1.5,
+                        400px: (
+                                base:2.2em,
+                        ),
+                        900px: (
+                                base: .875em,
+                        ),
+                ),
+                scale : false,
+        ),
+
+        base : (
+                font-family: 'Random',
+                text-transform: uppercase,
+                text-decoration:none,
+                font-weight: 400,
+                letter-spacing: 1.12px,
+                line-height: 1.5,
+                leading: 1.5,
+                font-size: 0,
+                children: (
+                        p : 0,
+                        h1:6,
+                        h2:5,
+                        h3:4,
+                        h4:3,
+                        h5:2,
+                        h6:1,
+                        i:0,
+                        a:0,
+                        strong:0,
+                        blockquote:0,
+                        '.lead':1,
+                        caption:-1
+                ),
+                modularscale: (
+                        base: 1em,
+                        ratio: 1.2,
+                        400px: (
+                                base:1em,
+                        ),
+                        900px: (
+                                base: .875em,
+                        ),
+                ),
+                scale : true,
+        )
+)
+
+

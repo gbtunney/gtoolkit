@@ -1,0 +1,44 @@
+/**
+ * Toolkit styles
+ */
+@import 'node_modules/modularscale-sass/stylesheets/modularscale';
+@import 'node_modules/normalize.css/normalize.css';
+@import "config";
+@import 'helpers/helpers';
+
+body {
+    font-family: sans-serif;
+    background-color: purple;
+
+}
+
+%specialchildprops {
+    display: block;
+    background: blue;
+
+}
+
+%specialchildprops2 {
+    display: block;
+    background: chartreuse;
+
+}
+
+@mixin generateButtons($prefix:'.g',$container-key : default,$theme-key :default, $type-style-key:default) {
+
+    $container: map_get($containerset, $container-key);
+    $mytypestyle: map_get($type-style, $type-style-key);
+    //color scheme variants
+    $themeset-inverted: map-swap-key(map_get($themeset, $theme-key), foreground, background);
+    $themeset-accent: map-swap-key(map_get($themeset, $theme-key), accent, background);
+
+    @if $prefix != null {
+        $classname: $prefix + "-" +  $container-key+"-" + $theme-key;
+        @debug $classname;
+        @include component($classname, $container, map_get($themeset, $theme-key), $mytypestyle);
+        @include component($classname + '-inverted', $container, $themeset-inverted, $mytypestyle);
+        @include component($classname+'-accent', $container, $themeset-accent, $mytypestyle);
+    }
+}
+
+@include generateButtons();
