@@ -1,36 +1,37 @@
+$font-path: '../fonts/';
 @font-face {
     font-family: 'PostGrotesk-Book';
-    src: url('../PostGrotesk-Book.woff2') format('woff2'),
-    url('../PostGrotesk-Book.woff') format('woff');
+    src: url($font-path+ 'PostGrotesk-Book.woff2') format('woff2'),
+    url($font-path +'PostGrotesk-Book.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'PostGrotesk-Medium';
-    src: url('../PostGrotesk-Medium.woff2') format('woff2'),
-    url('../PostGrotesk-Book.woff') format('woff');
+    src: url($font-path+ 'PostGrotesk-Medium.woff2') format('woff2'),
+    url($font-path+ 'PostGrotesk-Book.woff') format('woff');
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Random';
-    src: url('../33B5CD_1_0.woff2') format('woff2');
+    src: url($font-path+ '33B5CD_1_0.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Random2';
-    src: url('../2E464C_0_0.woff2') format('woff2');
+    src: url($font-path+ '2E464C_0_0.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'ITCStepp';
-    src: url('../298F35_1_0.woff') format('woff2');
+    src: url($font-path+ '298F35_1_0.woff') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
@@ -62,7 +63,7 @@ $modularscale: (
                 base: .875em,
         ),
 );
-
+//loop thru all these maybe
 $component-key-set: (
         //this will generate preconfigured classes for an inverted, accent and regular colorscheme versions.
         default: (
@@ -78,21 +79,22 @@ $component-key-set: (
                 text-style: default,
         ),
 );
+
 $containerset: (
         default: (
-                width: 100%,
+                width: 250px,
                 height: 50px,
                 duration: 250ms,
                 padding:20px,
-                border-width: 1px 2em 0 4rem,
+                border-width: 0,
                 border-style: solid,
-                text-align:right,
+                text-align:center,
                 overflow:hidden,
                 child-content: (
-                        h2: specialchildprops,
-                        h3:specialchildprops2,
+                        a: specialchildprops,
+                        'a:hover':specialchildprops2,
                 ),
-                accentSelector: 'p,code,h1,blockquote'
+                accentSelector: 'h1,h2,h3,h4,h5,46'
         ),
 );
 $themeset: (

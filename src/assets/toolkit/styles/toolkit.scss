@@ -1,16 +1,144 @@
 /**
  * Toolkit styles
  */
+//@import 'node_modules/singularitygs/stylesheets/singularitygs';
 @import 'node_modules/modularscale-sass/stylesheets/modularscale';
-@import 'node_modules/normalize.css/normalize.css';
+@import 'vendor/normalize';
+@import "node_modules/ritmo/_ritmo.scss";
 @import "config";
 @import 'helpers/helpers';
 
-body {
-    font-family: sans-serif;
-    background-color: purple;
+$baseLineHeight:1.5; // how large the line height is as a multiple of font size
+$leading:$baseLineHeight * 1rem;
+// Rate of growth for headings
+// I actually like this to be slightly smaller then the leading. Makes for tight headings.
+$scale:1.414;
+
+/* Setup */
+.sixteen-nine {
+    @include aspect-ratio(4, 3);
+    border: 1px solid red;
+    overflow: hidden;
+    // max-width:400px;
+    background-color: $dark-gray;
+}
+
+img.responsive{
+    //@include maintain-ratio(1 1);
+    max-width: 100%;
+    width: 100%;
+    //height: auto;
+}
+html {
+
+    @include doTypeset(map_get($type-style, 'base'));
+
+    /* Change default typefaces here */
+
+   // @include(map_get(  $typestyles, base));
+
+    // Make everything look a little nicer in webkit
+    -webkit-font-smoothing: antialiased;
+    // -webkit-text-size-adjust: auto
+    // -moz-text-size-adjust: auto
+    // -ms-text-size-adjust: auto
+    // -o-text-size-adjust: auto
+    // text-size-adjust: auto
+    @include texture($khaki, 38, 1);
+}
+/* Copy & Lists */
+/*
+p {
+    line-height: $leading;
+    margin-top: $leading;
+    margin-bottom: 0;
+    letter-spacing: -.2px;
+}
+ul,
+ol {
+    margin-top: $leading;
+    margin-bottom: $leading;
+    li {
+        line-height: $leading;
+    }
+    ul,
+    ol {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+blockquote {
+    line-height: $leading;
+    margin-top: $leading;
+    margin-bottom: $leading;
+}*/
+/* Headings */
+
+/*h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Random2';
+    margin-top: $leading;
+    margin-bottom: 0;
+    line-height: 1.5;
 
 }
+h1 {
+
+    font-weight: bold;
+    font-family: 'PostGrotesk-Medium';
+
+}
+h2 {
+    // line-height: 2 * $leading;
+    margin-top: 2 * $leading;
+}
+h3 {
+}
+h4 {
+    text-transform: uppercase;
+}
+h5 {
+}
+h6 {
+}*/
+/* Tables */
+
+table {
+    margin-top: $leading;
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+td,
+th {
+    padding: 0;
+  //  line-height: $baseLineHeight * $baseFontSize - 0px;
+}
+/* Code blocks */
+
+code {
+    // Forces text to constrain to the line-height. Not ideal, but works.
+    // vertical-align: bottom;
+    //font-family: 'Random';
+  //  text-transform: uppercase;
+
+}
+/* Leading paragraph text */
+
+.lead {
+    @include ms-respond(font-size, 2);
+    line-height: 1.5;
+}
+
+/* Hug a the block above you */
+
+.hug {
+    margin-top: 0;
+}
+
 
 %specialchildprops {
     display: block;
@@ -23,6 +151,7 @@ body {
     background: chartreuse;
 
 }
+
 
 @mixin generateButtons($prefix:'.g',$container-key : default,$theme-key :default, $type-style-key:default) {
 
@@ -40,5 +169,7 @@ body {
         @include component($classname+'-accent', $container, $themeset-accent, $mytypestyle);
     }
 }
+@include generateButtons('.g-btn', default, primary, default);
 
-@include generateButtons();
+//@include generateButtons();
+
