@@ -54,13 +54,13 @@ $crowshead: #1a130a;
 $type-scale: 1;
 
 $modularscale: (
-        base: .75em,
+        base: .85em,
         ratio: 1.2,
         400px: (
                 base:1em,
         ),
         900px: (
-                base: .875em,
+                base: 1.875em,
         ),
 );
 //loop thru all these maybe
@@ -94,6 +94,17 @@ $containerset: (
                         a: specialchildprops,
                         'a:hover':specialchildprops2,
                 ),
+                accentSelector: 'h1,h2,h3,h4,h5,46'
+        ),
+        btn: (
+                width: 250px,
+                height: auto,
+                duration: 250ms,
+                padding:10px,
+                border-width: 1px,
+                border-style: solid,
+                text-align:center,
+                overflow:hidden,
                 accentSelector: 'h1,h2,h3,h4,h5,46'
         ),
 );
@@ -134,7 +145,7 @@ $themeset: (
 
 $type-style: (
         default : (
-                font-family: Arial,
+                font-family: 'PostGrotesk-Book',
                 text-transform: none,
                 text-decoration:none,
                 font-weight: normal,
@@ -148,27 +159,17 @@ $type-style: (
                         h1:6,
                         h2:5,
                 ),
-                modularscale: (
-                        base: 1em,
-                        ratio: 1.5,
-                        400px: (
-                                base:2.2em,
-                        ),
-                        900px: (
-                                base: .875em,
-                        ),
-                ),
                 scale : false,
         ),
-
         base : (
-                font-family: 'Random',
-                text-transform: uppercase,
+                font-family: Arial,
+                text-transform: none,
                 text-decoration:none,
-                font-weight: 400,
-                letter-spacing: 1.12px,
+                font-weight: normal,
+                letter-spacing: 0px,
                 line-height: 1.5,
                 leading: 1.5,
+            //TODO: change to direct font size option
                 font-size: 0,
                 children: (
                         p : 0,
@@ -185,6 +186,18 @@ $type-style: (
                         '.lead':1,
                         caption:-1
                 ),
+                scale : false,
+        ),
+
+        heading : (
+                font-family: 'Random',
+                text-transform: uppercase,
+                text-decoration:none,
+                font-weight: 400,
+                letter-spacing: 1.12px,
+                line-height: 1.5,
+                leading: 1.5,
+                font-size: 0,
                 modularscale: (
                         base: 1em,
                         ratio: 1.2,

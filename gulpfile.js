@@ -107,6 +107,12 @@ gulp.task('scripts', (done) => {
   });
 });
 
+// Fonts
+gulp.task('fonts', function() {
+    return gulp.src([
+        'src/assets/toolkit/fonts.*'])
+        .pipe(gulp.dest('dist/assets/toolkit/fonts/'));
+});
 
 // images
 gulp.task('images', ['favicon'], () => {

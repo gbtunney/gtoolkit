@@ -7,6 +7,46 @@
 @import "node_modules/ritmo/_ritmo.scss";
 @import "config";
 @import 'helpers/helpers';
+@import 'node_modules/breakpoint-sass/stylesheets/_breakpoint'; // or 'breakpoint-sass' when using npm
+@import 'node_modules/breakpoint-slicer/stylesheets/breakpoint-slicer';
+
+$slicer-breakpoints: 0px 480px 768px 992px 1200px;
+$slicer-breakpoint-names: xs sm md lg;
+
+.grid-item{
+    border:2px solid red;
+}
+.wrapper {
+    display: grid;
+   // grid-template-columns: repeat(3, 1fr);
+
+  /*  @include from(lg) {
+        grid-template-columns: 1px 2fr 4fr 1fr;
+    }
+    @include to(sm) {
+        grid-template-columns: 1fr  1fr;
+    }
+    @include at(md) {
+        grid-template-columns: 3fr  1fr;
+    }
+    grid-gap: 26px;*/
+    display: grid;
+    grid-template-rows: repeat(3, 200px);
+    grid-gap: 10px;
+    grid-auto-flow: column;
+    grid-auto-columns: 300px 100px;
+
+    background-color: #fff;
+    color: #444;
+}
+
+.box {
+    background-color: #444;
+    color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 150%;
+}
 
 $baseLineHeight:1.5; // how large the line height is as a multiple of font size
 $leading:$baseLineHeight * 1rem;
@@ -17,7 +57,6 @@ $scale:1.414;
 /* Setup */
 .sixteen-nine {
     @include aspect-ratio(4, 3);
-    border: 1px solid red;
     overflow: hidden;
     // max-width:400px;
     background-color: $dark-gray;
@@ -30,8 +69,7 @@ img.responsive{
     //height: auto;
 }
 html {
-
-    @include doTypeset(map_get($type-style, 'base'));
+  @include doTypeset(map_get($type-style, 'base'));
 
     /* Change default typefaces here */
 
@@ -45,6 +83,17 @@ html {
     // -o-text-size-adjust: auto
     // text-size-adjust: auto
     @include texture($khaki, 38, 1);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+
+    @include doTypeset(map_get($type-style, heading));
+
 }
 /* Copy & Lists */
 /*
@@ -129,7 +178,7 @@ code {
 /* Leading paragraph text */
 
 .lead {
-    @include ms-respond(font-size, 2);
+    //@include ms-respond(font-size, 2);
     line-height: 1.5;
 }
 
@@ -141,21 +190,30 @@ code {
 
 
 %specialchildprops {
-    display: block;
+   /* display: block;
     background: blue;
+    &:visited{
+        background-color: red;
+
+    }
+
+    a{
+
+    }*/
 
 }
 
 %specialchildprops2 {
-    display: block;
-    background: chartreuse;
+    //display: block;
+   // background: chartreuse;
 
 }
 
 
+
 @mixin generateButtons($prefix:'.g',$container-key : default,$theme-key :default, $type-style-key:default) {
 
-    $container: map_get($containerset, $container-key);
+    $container: map_get($containerset, btn);
     $mytypestyle: map_get($type-style, $type-style-key);
     //color scheme variants
     $themeset-inverted: map-swap-key(map_get($themeset, $theme-key), foreground, background);
@@ -164,12 +222,10 @@ code {
     @if $prefix != null {
         $classname: $prefix + "-" +  $container-key+"-" + $theme-key;
         @debug $classname;
-        @include component($classname, $container, map_get($themeset, $theme-key), $mytypestyle);
-        @include component($classname + '-inverted', $container, $themeset-inverted, $mytypestyle);
-        @include component($classname+'-accent', $container, $themeset-accent, $mytypestyle);
+        @include component($classname, $container, map_get($themeset, $theme-key), $mytypestyle,true);
+        @include component($classname + '-inverted', $container, $themeset-inverted, $mytypestyle,true);
+        @include component($classname+'-accent', $container, $themeset-accent, $mytypestyle,true);
     }
 }
-@include generateButtons('.g-btn', default, primary, default);
-
-//@include generateButtons();
+@include generateButtons('.g-btn', default, primary, heading);
 
